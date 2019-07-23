@@ -1,6 +1,7 @@
 import path from 'path';
 import grpc from 'grpc';
 import protoLoader from '@grpc/proto-loader';
+import { decodeResult } from './utils';
 
 const PROTO_PATH = path.resolve(__dirname, './pb/admission_control.proto');
 
@@ -29,7 +30,7 @@ export default class Client {
       }, (error, response) => {
         const result = error ? null : response.response_items[0][`${command}_response`];
         if (error) return reject(error);
-        return resolve(result);
+        return resolve(decodeResult(command, result));
       });
     });
     if (!cb) return promise;

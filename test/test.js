@@ -39,10 +39,6 @@ const test = async () => {
   };
   client.request('get_transactions', params).then(transactions => {
     console.log('Transactions', transactions);
-
-    /** Deserialize raw txn bytes */
-    const rawTx = libra.utils.deserializeRawTxnBytes(transactions.txn_list_with_proof.transactions[0].raw_txn_bytes);
-    console.log('Raw transaction', rawTx);
   });
 };
 
