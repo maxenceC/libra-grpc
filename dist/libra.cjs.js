@@ -44,12 +44,7 @@ function decodeGetTransactionsResult(result) {
 }
 
 function decodeResult(command, result) {
-  switch (command) {
-    case 'get_transactions':
-      return decodeGetTransactionsResult(result);
-    default:
-      return result;
-  }
+  return result;
 }
 
 var utils = {

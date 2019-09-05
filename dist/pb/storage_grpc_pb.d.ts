@@ -15,8 +15,8 @@ interface IStorageService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     saveTransactions: IStorageService_ISaveTransactions;
     updateToLatestLedger: IStorageService_IUpdateToLatestLedger;
     getTransactions: IStorageService_IGetTransactions;
-    getAccountStateWithProofByStateRoot: IStorageService_IGetAccountStateWithProofByStateRoot;
-    getExecutorStartupInfo: IStorageService_IGetExecutorStartupInfo;
+    getAccountStateWithProofByVersion: IStorageService_IGetAccountStateWithProofByVersion;
+    getStartupInfo: IStorageService_IGetStartupInfo;
 }
 
 interface IStorageService_ISaveTransactions extends grpc.MethodDefinition<storage_pb.SaveTransactionsRequest, storage_pb.SaveTransactionsResponse> {
@@ -46,23 +46,23 @@ interface IStorageService_IGetTransactions extends grpc.MethodDefinition<storage
     responseSerialize: grpc.serialize<storage_pb.GetTransactionsResponse>;
     responseDeserialize: grpc.deserialize<storage_pb.GetTransactionsResponse>;
 }
-interface IStorageService_IGetAccountStateWithProofByStateRoot extends grpc.MethodDefinition<storage_pb.GetAccountStateWithProofByStateRootRequest, storage_pb.GetAccountStateWithProofByStateRootResponse> {
-    path: string; // "/storage.Storage/GetAccountStateWithProofByStateRoot"
+interface IStorageService_IGetAccountStateWithProofByVersion extends grpc.MethodDefinition<storage_pb.GetAccountStateWithProofByVersionRequest, storage_pb.GetAccountStateWithProofByVersionResponse> {
+    path: string; // "/storage.Storage/GetAccountStateWithProofByVersion"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<storage_pb.GetAccountStateWithProofByStateRootRequest>;
-    requestDeserialize: grpc.deserialize<storage_pb.GetAccountStateWithProofByStateRootRequest>;
-    responseSerialize: grpc.serialize<storage_pb.GetAccountStateWithProofByStateRootResponse>;
-    responseDeserialize: grpc.deserialize<storage_pb.GetAccountStateWithProofByStateRootResponse>;
+    requestSerialize: grpc.serialize<storage_pb.GetAccountStateWithProofByVersionRequest>;
+    requestDeserialize: grpc.deserialize<storage_pb.GetAccountStateWithProofByVersionRequest>;
+    responseSerialize: grpc.serialize<storage_pb.GetAccountStateWithProofByVersionResponse>;
+    responseDeserialize: grpc.deserialize<storage_pb.GetAccountStateWithProofByVersionResponse>;
 }
-interface IStorageService_IGetExecutorStartupInfo extends grpc.MethodDefinition<storage_pb.GetExecutorStartupInfoRequest, storage_pb.GetExecutorStartupInfoResponse> {
-    path: string; // "/storage.Storage/GetExecutorStartupInfo"
+interface IStorageService_IGetStartupInfo extends grpc.MethodDefinition<storage_pb.GetStartupInfoRequest, storage_pb.GetStartupInfoResponse> {
+    path: string; // "/storage.Storage/GetStartupInfo"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<storage_pb.GetExecutorStartupInfoRequest>;
-    requestDeserialize: grpc.deserialize<storage_pb.GetExecutorStartupInfoRequest>;
-    responseSerialize: grpc.serialize<storage_pb.GetExecutorStartupInfoResponse>;
-    responseDeserialize: grpc.deserialize<storage_pb.GetExecutorStartupInfoResponse>;
+    requestSerialize: grpc.serialize<storage_pb.GetStartupInfoRequest>;
+    requestDeserialize: grpc.deserialize<storage_pb.GetStartupInfoRequest>;
+    responseSerialize: grpc.serialize<storage_pb.GetStartupInfoResponse>;
+    responseDeserialize: grpc.deserialize<storage_pb.GetStartupInfoResponse>;
 }
 
 export const StorageService: IStorageService;
@@ -71,8 +71,8 @@ export interface IStorageServer {
     saveTransactions: grpc.handleUnaryCall<storage_pb.SaveTransactionsRequest, storage_pb.SaveTransactionsResponse>;
     updateToLatestLedger: grpc.handleUnaryCall<get_with_proof_pb.UpdateToLatestLedgerRequest, get_with_proof_pb.UpdateToLatestLedgerResponse>;
     getTransactions: grpc.handleUnaryCall<storage_pb.GetTransactionsRequest, storage_pb.GetTransactionsResponse>;
-    getAccountStateWithProofByStateRoot: grpc.handleUnaryCall<storage_pb.GetAccountStateWithProofByStateRootRequest, storage_pb.GetAccountStateWithProofByStateRootResponse>;
-    getExecutorStartupInfo: grpc.handleUnaryCall<storage_pb.GetExecutorStartupInfoRequest, storage_pb.GetExecutorStartupInfoResponse>;
+    getAccountStateWithProofByVersion: grpc.handleUnaryCall<storage_pb.GetAccountStateWithProofByVersionRequest, storage_pb.GetAccountStateWithProofByVersionResponse>;
+    getStartupInfo: grpc.handleUnaryCall<storage_pb.GetStartupInfoRequest, storage_pb.GetStartupInfoResponse>;
 }
 
 export interface IStorageClient {
@@ -85,12 +85,12 @@ export interface IStorageClient {
     getTransactions(request: storage_pb.GetTransactionsRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
     getTransactions(request: storage_pb.GetTransactionsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
     getTransactions(request: storage_pb.GetTransactionsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
-    getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
-    getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
-    getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    getStartupInfo(request: storage_pb.GetStartupInfoRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    getStartupInfo(request: storage_pb.GetStartupInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    getStartupInfo(request: storage_pb.GetStartupInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class StorageClient extends grpc.Client implements IStorageClient {
@@ -104,10 +104,10 @@ export class StorageClient extends grpc.Client implements IStorageClient {
     public getTransactions(request: storage_pb.GetTransactionsRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
     public getTransactions(request: storage_pb.GetTransactionsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
     public getTransactions(request: storage_pb.GetTransactionsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetTransactionsResponse) => void): grpc.ClientUnaryCall;
-    public getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    public getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    public getAccountStateWithProofByStateRoot(request: storage_pb.GetAccountStateWithProofByStateRootRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByStateRootResponse) => void): grpc.ClientUnaryCall;
-    public getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
-    public getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
-    public getExecutorStartupInfo(request: storage_pb.GetExecutorStartupInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetExecutorStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    public getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    public getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    public getAccountStateWithProofByVersion(request: storage_pb.GetAccountStateWithProofByVersionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetAccountStateWithProofByVersionResponse) => void): grpc.ClientUnaryCall;
+    public getStartupInfo(request: storage_pb.GetStartupInfoRequest, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    public getStartupInfo(request: storage_pb.GetStartupInfoRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
+    public getStartupInfo(request: storage_pb.GetStartupInfoRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: storage_pb.GetStartupInfoResponse) => void): grpc.ClientUnaryCall;
 }

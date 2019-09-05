@@ -13,48 +13,48 @@ var transaction_pb = require('./transaction_pb.js');
 var account_state_blob_pb = require('./account_state_blob_pb.js');
 var proof_pb = require('./proof_pb.js');
 
-function serialize_storage_GetAccountStateWithProofByStateRootRequest(arg) {
-  if (!(arg instanceof storage_pb.GetAccountStateWithProofByStateRootRequest)) {
-    throw new Error('Expected argument of type storage.GetAccountStateWithProofByStateRootRequest');
+function serialize_storage_GetAccountStateWithProofByVersionRequest(arg) {
+  if (!(arg instanceof storage_pb.GetAccountStateWithProofByVersionRequest)) {
+    throw new Error('Expected argument of type storage.GetAccountStateWithProofByVersionRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_storage_GetAccountStateWithProofByStateRootRequest(buffer_arg) {
-  return storage_pb.GetAccountStateWithProofByStateRootRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_storage_GetAccountStateWithProofByVersionRequest(buffer_arg) {
+  return storage_pb.GetAccountStateWithProofByVersionRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_storage_GetAccountStateWithProofByStateRootResponse(arg) {
-  if (!(arg instanceof storage_pb.GetAccountStateWithProofByStateRootResponse)) {
-    throw new Error('Expected argument of type storage.GetAccountStateWithProofByStateRootResponse');
+function serialize_storage_GetAccountStateWithProofByVersionResponse(arg) {
+  if (!(arg instanceof storage_pb.GetAccountStateWithProofByVersionResponse)) {
+    throw new Error('Expected argument of type storage.GetAccountStateWithProofByVersionResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_storage_GetAccountStateWithProofByStateRootResponse(buffer_arg) {
-  return storage_pb.GetAccountStateWithProofByStateRootResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_storage_GetAccountStateWithProofByVersionResponse(buffer_arg) {
+  return storage_pb.GetAccountStateWithProofByVersionResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_storage_GetExecutorStartupInfoRequest(arg) {
-  if (!(arg instanceof storage_pb.GetExecutorStartupInfoRequest)) {
-    throw new Error('Expected argument of type storage.GetExecutorStartupInfoRequest');
+function serialize_storage_GetStartupInfoRequest(arg) {
+  if (!(arg instanceof storage_pb.GetStartupInfoRequest)) {
+    throw new Error('Expected argument of type storage.GetStartupInfoRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_storage_GetExecutorStartupInfoRequest(buffer_arg) {
-  return storage_pb.GetExecutorStartupInfoRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_storage_GetStartupInfoRequest(buffer_arg) {
+  return storage_pb.GetStartupInfoRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_storage_GetExecutorStartupInfoResponse(arg) {
-  if (!(arg instanceof storage_pb.GetExecutorStartupInfoResponse)) {
-    throw new Error('Expected argument of type storage.GetExecutorStartupInfoResponse');
+function serialize_storage_GetStartupInfoResponse(arg) {
+  if (!(arg instanceof storage_pb.GetStartupInfoResponse)) {
+    throw new Error('Expected argument of type storage.GetStartupInfoResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_storage_GetExecutorStartupInfoResponse(buffer_arg) {
-  return storage_pb.GetExecutorStartupInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_storage_GetStartupInfoResponse(buffer_arg) {
+  return storage_pb.GetStartupInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_storage_GetTransactionsRequest(arg) {
@@ -173,28 +173,28 @@ var StorageService = exports.StorageService = {
     responseSerialize: serialize_storage_GetTransactionsResponse,
     responseDeserialize: deserialize_storage_GetTransactionsResponse,
   },
-  getAccountStateWithProofByStateRoot: {
-    path: '/storage.Storage/GetAccountStateWithProofByStateRoot',
+  getAccountStateWithProofByVersion: {
+    path: '/storage.Storage/GetAccountStateWithProofByVersion',
     requestStream: false,
     responseStream: false,
-    requestType: storage_pb.GetAccountStateWithProofByStateRootRequest,
-    responseType: storage_pb.GetAccountStateWithProofByStateRootResponse,
-    requestSerialize: serialize_storage_GetAccountStateWithProofByStateRootRequest,
-    requestDeserialize: deserialize_storage_GetAccountStateWithProofByStateRootRequest,
-    responseSerialize: serialize_storage_GetAccountStateWithProofByStateRootResponse,
-    responseDeserialize: deserialize_storage_GetAccountStateWithProofByStateRootResponse,
+    requestType: storage_pb.GetAccountStateWithProofByVersionRequest,
+    responseType: storage_pb.GetAccountStateWithProofByVersionResponse,
+    requestSerialize: serialize_storage_GetAccountStateWithProofByVersionRequest,
+    requestDeserialize: deserialize_storage_GetAccountStateWithProofByVersionRequest,
+    responseSerialize: serialize_storage_GetAccountStateWithProofByVersionResponse,
+    responseDeserialize: deserialize_storage_GetAccountStateWithProofByVersionResponse,
   },
-  // Returns information needed for Executor to start up.
-  getExecutorStartupInfo: {
-    path: '/storage.Storage/GetExecutorStartupInfo',
+  // Returns information needed for libra core to start up.
+  getStartupInfo: {
+    path: '/storage.Storage/GetStartupInfo',
     requestStream: false,
     responseStream: false,
-    requestType: storage_pb.GetExecutorStartupInfoRequest,
-    responseType: storage_pb.GetExecutorStartupInfoResponse,
-    requestSerialize: serialize_storage_GetExecutorStartupInfoRequest,
-    requestDeserialize: deserialize_storage_GetExecutorStartupInfoRequest,
-    responseSerialize: serialize_storage_GetExecutorStartupInfoResponse,
-    responseDeserialize: deserialize_storage_GetExecutorStartupInfoResponse,
+    requestType: storage_pb.GetStartupInfoRequest,
+    responseType: storage_pb.GetStartupInfoResponse,
+    requestSerialize: serialize_storage_GetStartupInfoRequest,
+    requestDeserialize: deserialize_storage_GetStartupInfoRequest,
+    responseSerialize: serialize_storage_GetStartupInfoResponse,
+    responseDeserialize: deserialize_storage_GetStartupInfoResponse,
   },
 };
 

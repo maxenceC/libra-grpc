@@ -118,36 +118,34 @@ export namespace GetTransactionsResponse {
     }
 }
 
-export class GetAccountStateWithProofByStateRootRequest extends jspb.Message { 
+export class GetAccountStateWithProofByVersionRequest extends jspb.Message { 
     getAddress(): Uint8Array | string;
     getAddress_asU8(): Uint8Array;
     getAddress_asB64(): string;
     setAddress(value: Uint8Array | string): void;
 
-    getStateRootHash(): Uint8Array | string;
-    getStateRootHash_asU8(): Uint8Array;
-    getStateRootHash_asB64(): string;
-    setStateRootHash(value: Uint8Array | string): void;
+    getVersion(): number;
+    setVersion(value: number): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetAccountStateWithProofByStateRootRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetAccountStateWithProofByStateRootRequest): GetAccountStateWithProofByStateRootRequest.AsObject;
+    toObject(includeInstance?: boolean): GetAccountStateWithProofByVersionRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetAccountStateWithProofByVersionRequest): GetAccountStateWithProofByVersionRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetAccountStateWithProofByStateRootRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetAccountStateWithProofByStateRootRequest;
-    static deserializeBinaryFromReader(message: GetAccountStateWithProofByStateRootRequest, reader: jspb.BinaryReader): GetAccountStateWithProofByStateRootRequest;
+    static serializeBinaryToWriter(message: GetAccountStateWithProofByVersionRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetAccountStateWithProofByVersionRequest;
+    static deserializeBinaryFromReader(message: GetAccountStateWithProofByVersionRequest, reader: jspb.BinaryReader): GetAccountStateWithProofByVersionRequest;
 }
 
-export namespace GetAccountStateWithProofByStateRootRequest {
+export namespace GetAccountStateWithProofByVersionRequest {
     export type AsObject = {
         address: Uint8Array | string,
-        stateRootHash: Uint8Array | string,
+        version: number,
     }
 }
 
-export class GetAccountStateWithProofByStateRootResponse extends jspb.Message { 
+export class GetAccountStateWithProofByVersionResponse extends jspb.Message { 
 
     hasAccountStateBlob(): boolean;
     clearAccountStateBlob(): void;
@@ -162,64 +160,64 @@ export class GetAccountStateWithProofByStateRootResponse extends jspb.Message {
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetAccountStateWithProofByStateRootResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetAccountStateWithProofByStateRootResponse): GetAccountStateWithProofByStateRootResponse.AsObject;
+    toObject(includeInstance?: boolean): GetAccountStateWithProofByVersionResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetAccountStateWithProofByVersionResponse): GetAccountStateWithProofByVersionResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetAccountStateWithProofByStateRootResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetAccountStateWithProofByStateRootResponse;
-    static deserializeBinaryFromReader(message: GetAccountStateWithProofByStateRootResponse, reader: jspb.BinaryReader): GetAccountStateWithProofByStateRootResponse;
+    static serializeBinaryToWriter(message: GetAccountStateWithProofByVersionResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetAccountStateWithProofByVersionResponse;
+    static deserializeBinaryFromReader(message: GetAccountStateWithProofByVersionResponse, reader: jspb.BinaryReader): GetAccountStateWithProofByVersionResponse;
 }
 
-export namespace GetAccountStateWithProofByStateRootResponse {
+export namespace GetAccountStateWithProofByVersionResponse {
     export type AsObject = {
         accountStateBlob?: account_state_blob_pb.AccountStateBlob.AsObject,
         sparseMerkleProof?: proof_pb.SparseMerkleProof.AsObject,
     }
 }
 
-export class GetExecutorStartupInfoRequest extends jspb.Message { 
+export class GetStartupInfoRequest extends jspb.Message { 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetExecutorStartupInfoRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetExecutorStartupInfoRequest): GetExecutorStartupInfoRequest.AsObject;
+    toObject(includeInstance?: boolean): GetStartupInfoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStartupInfoRequest): GetStartupInfoRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetExecutorStartupInfoRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetExecutorStartupInfoRequest;
-    static deserializeBinaryFromReader(message: GetExecutorStartupInfoRequest, reader: jspb.BinaryReader): GetExecutorStartupInfoRequest;
+    static serializeBinaryToWriter(message: GetStartupInfoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStartupInfoRequest;
+    static deserializeBinaryFromReader(message: GetStartupInfoRequest, reader: jspb.BinaryReader): GetStartupInfoRequest;
 }
 
-export namespace GetExecutorStartupInfoRequest {
+export namespace GetStartupInfoRequest {
     export type AsObject = {
     }
 }
 
-export class GetExecutorStartupInfoResponse extends jspb.Message { 
+export class GetStartupInfoResponse extends jspb.Message { 
 
     hasInfo(): boolean;
     clearInfo(): void;
-    getInfo(): ExecutorStartupInfo | undefined;
-    setInfo(value?: ExecutorStartupInfo): void;
+    getInfo(): StartupInfo | undefined;
+    setInfo(value?: StartupInfo): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetExecutorStartupInfoResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: GetExecutorStartupInfoResponse): GetExecutorStartupInfoResponse.AsObject;
+    toObject(includeInstance?: boolean): GetStartupInfoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetStartupInfoResponse): GetStartupInfoResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetExecutorStartupInfoResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetExecutorStartupInfoResponse;
-    static deserializeBinaryFromReader(message: GetExecutorStartupInfoResponse, reader: jspb.BinaryReader): GetExecutorStartupInfoResponse;
+    static serializeBinaryToWriter(message: GetStartupInfoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetStartupInfoResponse;
+    static deserializeBinaryFromReader(message: GetStartupInfoResponse, reader: jspb.BinaryReader): GetStartupInfoResponse;
 }
 
-export namespace GetExecutorStartupInfoResponse {
+export namespace GetStartupInfoResponse {
     export type AsObject = {
-        info?: ExecutorStartupInfo.AsObject,
+        info?: StartupInfo.AsObject,
     }
 }
 
-export class ExecutorStartupInfo extends jspb.Message { 
+export class StartupInfo extends jspb.Message { 
 
     hasLedgerInfo(): boolean;
     clearLedgerInfo(): void;
@@ -243,16 +241,16 @@ export class ExecutorStartupInfo extends jspb.Message {
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): ExecutorStartupInfo.AsObject;
-    static toObject(includeInstance: boolean, msg: ExecutorStartupInfo): ExecutorStartupInfo.AsObject;
+    toObject(includeInstance?: boolean): StartupInfo.AsObject;
+    static toObject(includeInstance: boolean, msg: StartupInfo): StartupInfo.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: ExecutorStartupInfo, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): ExecutorStartupInfo;
-    static deserializeBinaryFromReader(message: ExecutorStartupInfo, reader: jspb.BinaryReader): ExecutorStartupInfo;
+    static serializeBinaryToWriter(message: StartupInfo, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StartupInfo;
+    static deserializeBinaryFromReader(message: StartupInfo, reader: jspb.BinaryReader): StartupInfo;
 }
 
-export namespace ExecutorStartupInfo {
+export namespace StartupInfo {
     export type AsObject = {
         ledgerInfo?: ledger_info_pb.LedgerInfo.AsObject,
         latestVersion: number,
