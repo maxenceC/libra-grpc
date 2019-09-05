@@ -84,6 +84,6 @@ class Client {
   }
 }
 
-var version = "0.0.5";
+var version = "0.0.6";
 
 export { Client, utils, version };

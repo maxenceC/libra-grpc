@@ -90,7 +90,7 @@ class Client {
   }
 }
 
-var version = "0.0.5";
+var version = "0.0.6";
 
 exports.Client = Client;
 exports.utils = utils;
