@@ -362,13 +362,16 @@ export class VoteData extends jspb.Message {
     getBlockId_asB64(): string;
     setBlockId(value: Uint8Array | string): void;
 
+    getRound(): number;
+    setRound(value: number): void;
+
     getExecutedStateId(): Uint8Array | string;
     getExecutedStateId_asU8(): Uint8Array;
     getExecutedStateId_asB64(): string;
     setExecutedStateId(value: Uint8Array | string): void;
 
-    getRound(): number;
-    setRound(value: number): void;
+    getVersion(): number;
+    setVersion(value: number): void;
 
     getParentBlockId(): Uint8Array | string;
     getParentBlockId_asU8(): Uint8Array;
@@ -400,8 +403,9 @@ export class VoteData extends jspb.Message {
 export namespace VoteData {
     export type AsObject = {
         blockId: Uint8Array | string,
-        executedStateId: Uint8Array | string,
         round: number,
+        executedStateId: Uint8Array | string,
+        version: number,
         parentBlockId: Uint8Array | string,
         parentBlockRound: number,
         grandparentBlockId: Uint8Array | string,

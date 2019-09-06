@@ -113,3 +113,41 @@ export namespace Event {
         json: string,
     }
 }
+
+export class DumpJemallocHeapProfileRequest extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DumpJemallocHeapProfileRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DumpJemallocHeapProfileRequest): DumpJemallocHeapProfileRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DumpJemallocHeapProfileRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DumpJemallocHeapProfileRequest;
+    static deserializeBinaryFromReader(message: DumpJemallocHeapProfileRequest, reader: jspb.BinaryReader): DumpJemallocHeapProfileRequest;
+}
+
+export namespace DumpJemallocHeapProfileRequest {
+    export type AsObject = {
+    }
+}
+
+export class DumpJemallocHeapProfileResponse extends jspb.Message { 
+    getStatusCode(): number;
+    setStatusCode(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DumpJemallocHeapProfileResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: DumpJemallocHeapProfileResponse): DumpJemallocHeapProfileResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DumpJemallocHeapProfileResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DumpJemallocHeapProfileResponse;
+    static deserializeBinaryFromReader(message: DumpJemallocHeapProfileResponse, reader: jspb.BinaryReader): DumpJemallocHeapProfileResponse;
+}
+
+export namespace DumpJemallocHeapProfileResponse {
+    export type AsObject = {
+        statusCode: number,
+    }
+}

@@ -9,6 +9,28 @@
 var grpc = require('grpc');
 var node_debug_interface_pb = require('./node_debug_interface_pb.js');
 
+function serialize_debug_DumpJemallocHeapProfileRequest(arg) {
+  if (!(arg instanceof node_debug_interface_pb.DumpJemallocHeapProfileRequest)) {
+    throw new Error('Expected argument of type debug.DumpJemallocHeapProfileRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_debug_DumpJemallocHeapProfileRequest(buffer_arg) {
+  return node_debug_interface_pb.DumpJemallocHeapProfileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_debug_DumpJemallocHeapProfileResponse(arg) {
+  if (!(arg instanceof node_debug_interface_pb.DumpJemallocHeapProfileResponse)) {
+    throw new Error('Expected argument of type debug.DumpJemallocHeapProfileResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_debug_DumpJemallocHeapProfileResponse(buffer_arg) {
+  return node_debug_interface_pb.DumpJemallocHeapProfileResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_debug_GetEventsRequest(arg) {
   if (!(arg instanceof node_debug_interface_pb.GetEventsRequest)) {
     throw new Error('Expected argument of type debug.GetEventsRequest');
@@ -78,6 +100,18 @@ var NodeDebugInterfaceService = exports.NodeDebugInterfaceService = {
     requestDeserialize: deserialize_debug_GetEventsRequest,
     responseSerialize: serialize_debug_GetEventsResponse,
     responseDeserialize: deserialize_debug_GetEventsResponse,
+  },
+  // Triggers a dump of heap profile.
+  dumpJemallocHeapProfile: {
+    path: '/debug.NodeDebugInterface/DumpJemallocHeapProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: node_debug_interface_pb.DumpJemallocHeapProfileRequest,
+    responseType: node_debug_interface_pb.DumpJemallocHeapProfileResponse,
+    requestSerialize: serialize_debug_DumpJemallocHeapProfileRequest,
+    requestDeserialize: deserialize_debug_DumpJemallocHeapProfileRequest,
+    responseSerialize: serialize_debug_DumpJemallocHeapProfileResponse,
+    responseDeserialize: deserialize_debug_DumpJemallocHeapProfileResponse,
   },
 };
 

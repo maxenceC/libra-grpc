@@ -35,7 +35,12 @@ export function decodeGetTransactionsResult(result) {
 }
 
 export function decodeResult(command, result) {
-  return result;
+  switch (command) {
+    case 'get_transactions':
+      return decodeGetTransactionsResult(result);
+    default:
+      return result;
+  }
 }
 
 export default {

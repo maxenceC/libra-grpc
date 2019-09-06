@@ -2370,12 +2370,13 @@ proto.network.VoteData.prototype.toObject = function(opt_includeInstance) {
 proto.network.VoteData.toObject = function(includeInstance, msg) {
   var f, obj = {
     blockId: msg.getBlockId_asB64(),
+    round: jspb.Message.getFieldWithDefault(msg, 2, 0),
     executedStateId: msg.getExecutedStateId_asB64(),
-    round: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    version: jspb.Message.getFieldWithDefault(msg, 4, 0),
     parentBlockId: msg.getParentBlockId_asB64(),
-    parentBlockRound: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    parentBlockRound: jspb.Message.getFieldWithDefault(msg, 6, 0),
     grandparentBlockId: msg.getGrandparentBlockId_asB64(),
-    grandparentBlockRound: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    grandparentBlockRound: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -2417,26 +2418,30 @@ proto.network.VoteData.deserializeBinaryFromReader = function(msg, reader) {
       msg.setBlockId(value);
       break;
     case 2:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
-      msg.setExecutedStateId(value);
-      break;
-    case 3:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setRound(value);
       break;
+    case 3:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setExecutedStateId(value);
+      break;
     case 4:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setVersion(value);
+      break;
+    case 5:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setParentBlockId(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setParentBlockRound(value);
       break;
-    case 6:
+    case 7:
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setGrandparentBlockId(value);
       break;
-    case 7:
+    case 8:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setGrandparentBlockRound(value);
       break;
@@ -2476,45 +2481,52 @@ proto.network.VoteData.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getExecutedStateId_asU8();
-  if (f.length > 0) {
-    writer.writeBytes(
+  f = message.getRound();
+  if (f !== 0) {
+    writer.writeUint64(
       2,
       f
     );
   }
-  f = message.getRound();
+  f = message.getExecutedStateId_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      3,
+      f
+    );
+  }
+  f = message.getVersion();
   if (f !== 0) {
     writer.writeUint64(
-      3,
+      4,
       f
     );
   }
   f = message.getParentBlockId_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      4,
+      5,
       f
     );
   }
   f = message.getParentBlockRound();
   if (f !== 0) {
     writer.writeUint64(
-      5,
+      6,
       f
     );
   }
   f = message.getGrandparentBlockId_asU8();
   if (f.length > 0) {
     writer.writeBytes(
-      6,
+      7,
       f
     );
   }
   f = message.getGrandparentBlockRound();
   if (f !== 0) {
     writer.writeUint64(
-      7,
+      8,
       f
     );
   }
@@ -2561,16 +2573,31 @@ proto.network.VoteData.prototype.setBlockId = function(value) {
 
 
 /**
- * optional bytes executed_state_id = 2;
- * @return {!(string|Uint8Array)}
+ * optional uint64 round = 2;
+ * @return {number}
  */
-proto.network.VoteData.prototype.getExecutedStateId = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+proto.network.VoteData.prototype.getRound = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {number} value */
+proto.network.VoteData.prototype.setRound = function(value) {
+  jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
 /**
- * optional bytes executed_state_id = 2;
+ * optional bytes executed_state_id = 3;
+ * @return {!(string|Uint8Array)}
+ */
+proto.network.VoteData.prototype.getExecutedStateId = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * optional bytes executed_state_id = 3;
  * This is a type-conversion wrapper around `getExecutedStateId()`
  * @return {string}
  */
@@ -2581,7 +2608,7 @@ proto.network.VoteData.prototype.getExecutedStateId_asB64 = function() {
 
 
 /**
- * optional bytes executed_state_id = 2;
+ * optional bytes executed_state_id = 3;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getExecutedStateId()`
@@ -2595,36 +2622,36 @@ proto.network.VoteData.prototype.getExecutedStateId_asU8 = function() {
 
 /** @param {!(string|Uint8Array)} value */
 proto.network.VoteData.prototype.setExecutedStateId = function(value) {
-  jspb.Message.setProto3BytesField(this, 2, value);
+  jspb.Message.setProto3BytesField(this, 3, value);
 };
 
 
 /**
- * optional uint64 round = 3;
+ * optional uint64 version = 4;
  * @return {number}
  */
-proto.network.VoteData.prototype.getRound = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+proto.network.VoteData.prototype.getVersion = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /** @param {number} value */
-proto.network.VoteData.prototype.setRound = function(value) {
-  jspb.Message.setProto3IntField(this, 3, value);
+proto.network.VoteData.prototype.setVersion = function(value) {
+  jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
 /**
- * optional bytes parent_block_id = 4;
+ * optional bytes parent_block_id = 5;
  * @return {!(string|Uint8Array)}
  */
 proto.network.VoteData.prototype.getParentBlockId = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * optional bytes parent_block_id = 4;
+ * optional bytes parent_block_id = 5;
  * This is a type-conversion wrapper around `getParentBlockId()`
  * @return {string}
  */
@@ -2635,7 +2662,7 @@ proto.network.VoteData.prototype.getParentBlockId_asB64 = function() {
 
 
 /**
- * optional bytes parent_block_id = 4;
+ * optional bytes parent_block_id = 5;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getParentBlockId()`
@@ -2649,36 +2676,36 @@ proto.network.VoteData.prototype.getParentBlockId_asU8 = function() {
 
 /** @param {!(string|Uint8Array)} value */
 proto.network.VoteData.prototype.setParentBlockId = function(value) {
-  jspb.Message.setProto3BytesField(this, 4, value);
+  jspb.Message.setProto3BytesField(this, 5, value);
 };
 
 
 /**
- * optional uint64 parent_block_round = 5;
+ * optional uint64 parent_block_round = 6;
  * @return {number}
  */
 proto.network.VoteData.prototype.getParentBlockRound = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
 /** @param {number} value */
 proto.network.VoteData.prototype.setParentBlockRound = function(value) {
-  jspb.Message.setProto3IntField(this, 5, value);
+  jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
 /**
- * optional bytes grandparent_block_id = 6;
+ * optional bytes grandparent_block_id = 7;
  * @return {!(string|Uint8Array)}
  */
 proto.network.VoteData.prototype.getGrandparentBlockId = function() {
-  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /**
- * optional bytes grandparent_block_id = 6;
+ * optional bytes grandparent_block_id = 7;
  * This is a type-conversion wrapper around `getGrandparentBlockId()`
  * @return {string}
  */
@@ -2689,7 +2716,7 @@ proto.network.VoteData.prototype.getGrandparentBlockId_asB64 = function() {
 
 
 /**
- * optional bytes grandparent_block_id = 6;
+ * optional bytes grandparent_block_id = 7;
  * Note that Uint8Array is not supported on all browsers.
  * @see http://caniuse.com/Uint8Array
  * This is a type-conversion wrapper around `getGrandparentBlockId()`
@@ -2703,22 +2730,22 @@ proto.network.VoteData.prototype.getGrandparentBlockId_asU8 = function() {
 
 /** @param {!(string|Uint8Array)} value */
 proto.network.VoteData.prototype.setGrandparentBlockId = function(value) {
-  jspb.Message.setProto3BytesField(this, 6, value);
+  jspb.Message.setProto3BytesField(this, 7, value);
 };
 
 
 /**
- * optional uint64 grandparent_block_round = 7;
+ * optional uint64 grandparent_block_round = 8;
  * @return {number}
  */
 proto.network.VoteData.prototype.getGrandparentBlockRound = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /** @param {number} value */
 proto.network.VoteData.prototype.setGrandparentBlockRound = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
+  jspb.Message.setProto3IntField(this, 8, value);
 };
 
 

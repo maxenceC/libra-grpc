@@ -44,7 +44,12 @@ function decodeGetTransactionsResult(result) {
 }
 
 function decodeResult(command, result) {
-  return result;
+  switch (command) {
+    case 'get_transactions':
+      return decodeGetTransactionsResult(result);
+    default:
+      return result;
+  }
 }
 
 var utils = {
@@ -90,7 +95,7 @@ class Client {
   }
 }
 
-var version = "0.0.6";
+var version = "0.0.7";
 
 exports.Client = Client;
 exports.utils = utils;

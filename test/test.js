@@ -19,6 +19,16 @@ const test = async () => {
   const transaction = await client.request('get_account_transaction_by_sequence_number', params);
   console.log('Transaction', transaction);
 
+  /** Get transactions */
+  params = {
+    start_version: 1,
+    limit: 10,
+    fetch_events: true,
+  };
+  client.request('get_transactions', params).then(transactions => {
+    console.log('Transactions', transactions);
+  });
+
   /** Get events */
   params = {
     access_path: {
@@ -30,16 +40,6 @@ const test = async () => {
   };
   const events = await client.request('get_events_by_event_access_path', params);
   console.log('Events', events);
-
-  /** Get transactions */
-  params = {
-    start_version: 1,
-    limit: 10,
-    fetch_events: true,
-  };
-  client.request('get_transactions', params).then(transactions => {
-    console.log('Transactions', transactions);
-  });
 };
 
 test();
