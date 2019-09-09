@@ -10,8 +10,21 @@ export function bufferToHex(buffer) {
 
 export function deserializeRawTxnBytes(rawTxnBytes) {
   const rawTxn = RawTransaction.deserializeBinary(rawTxnBytes);
+  const rawProgram = rawTxn.getProgram();
+
+  const program = {
+    arguments: rawProgram.getArgumentsList().map(argument => ({
+      type: argument.getType(),
+      value: argument.getData_asU8(),
+    })),
+    code: rawProgram.getCode_asU8(),
+    modules: rawProgram.getModulesList_asU8(),
+  };
+
   const rawTxnObj = rawTxn.toObject();
   rawTxnObj.senderAccount = Buffer.from(rawTxn.getSenderAccount(), 'base64').toString('hex');
+  rawTxnObj.receiverAccount = Buffer.from(program.arguments[0].value, 'base64').toString('hex');
+  rawTxnObj.value = parseInt(bufferToHex(program.arguments[1].value), 16) / 1000000;
   if (rawTxn.hasProgram() && rawTxn.getProgram().getArgumentsList()) {
     rawTxnObj.program.argumentsList = rawTxn.getProgram().getArgumentsList().map(argument => ({
       type: argument.getType(),
