@@ -1,5 +1,5 @@
 {
-  "name": "libra-grpc",
+  "name": "@maxencec/libra-grpc",
   "version": "0.0.7",
   "description": "A lightweight JavaScript library for Libra",
   "main": "dist/libra.cjs.js",
@@ -30,11 +30,11 @@
     "dist",
     "src"
   ],
-  "repository": "bonustrack/libra-grpc",
-  "author": "Bonustrack",
+  "repository": "maxenceC/libra-grpc",
+  "author": "maxenceC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bonustrack/libra-grpc/issues"
+    "url": "https://github.com/maxenceC/libra-grpc/issues"
   },
-  "homepage": "https://github.com/bonustrack/libra-grpc"
+  "homepage": "https://github.com/maxenceC/libra-grpc"
 }

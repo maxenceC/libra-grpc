@@ -25,6 +25,7 @@ export function deserializeRawTxnBytes(rawTxnBytes) {
   rawTxnObj.senderAccount = Buffer.from(rawTxn.getSenderAccount(), 'base64').toString('hex');
   rawTxnObj.receiverAccount = Buffer.from(program.arguments[0].value, 'base64').toString('hex');
   rawTxnObj.value = parseInt(bufferToHex(program.arguments[1].value), 16) / 1000000;
+  rawTxnObj.expirationTime = BigNumber(rawTxn.getExpirationTime()).c[0];
   if (rawTxn.hasProgram() && rawTxn.getProgram().getArgumentsList()) {
     rawTxnObj.program.argumentsList = rawTxn.getProgram().getArgumentsList().map(argument => ({
       type: argument.getType(),
