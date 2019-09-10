@@ -1,6 +1,6 @@
 {
   "name": "@maxencec/libra-grpc",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A lightweight JavaScript library for Libra",
   "main": "dist/libra.cjs.js",
   "module": "dist/libra.esm.js",
